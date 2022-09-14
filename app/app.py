@@ -79,7 +79,7 @@ class GetData(Resource):
 
         data = {
             "status": True,
-            "data": items.reverse()
+            "data": items[::-1]
         }
         return data
 
