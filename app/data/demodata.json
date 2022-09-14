@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "title": "Plastic bottles",
+      "description": "We collect bottles of any size for the production of shoelaces. The collection will take place throughout the day.",
+      "location": "Franklin Delano Roosevelt, Grosvenor Square, Mayfair, City of Westminster, London, Greater London, England, W1K 5AE, United Kingdom",
+      "country": "United Kingdom",
+      "city": "City of Westminster",
+      "datetime": "29.8.2022",
+      "longitude": "-0.1515386",
+      "latitude": "51.5118293"
+    },
+    {
+      "title": "Cotton clothes",
+      "description": "If you have unwanted cotton clothes, you can bring them to us, they will be recycled and given a new life.",
+      "location": "St. Clement's Church, Treadgold Street, Lancaster West Estate, North Kensington, Royal Borough of Kensington and Chelsea, London, Greater London, England, W11 4BP, United Kingdom",
+      "country": "United Kingdom",
+      "city": "London",
+      "datetime": "28.8.2022",
+      "longitude": "-0.2157829907825688",
+      "latitude": "51.512059050000005"
+    },
+    {
+      "title": "Used batteries",
+      "description": "Don't throw away used batteries, we know what to do with them, bring them to our collection point and help save the planet.",
+      "location": "Royal Garden Hotel, 2-24, Kensington High Street, South Kensington, Royal Borough of Kensington and Chelsea, London, Greater London, England, W8 4PT, United Kingdom",
+      "country": "United Kingdom",
+      "city": "London",
+      "datetime": "23.8.2022",
+      "longitude": "-0.18807466604958878",
+      "latitude": "51.502753299999995"
+    },
+    {
+      "title": "Used batteries",
+      "description": "Don't throw away used batteries, we know what to do with them, bring them to our collection point and help save the planet.",
+      "location": "Royal Garden Hotel, 2-24, Kensington High Street, South Kensington, Royal Borough of Kensington and Chelsea, London, Greater London, England, W8 4PT, United Kingdom",
+      "country": "United Kingdom",
+      "city": "London",
+      "datetime": "23.8.2022",
+      "longitude": "-0.18807466604958878",
+      "latitude": "51.502753299999995"
+    },
+    {
+      "title": "Used batteries",
+      "description": "Don't throw away used batteries, we know what to do with them, bring them to our collection point and help save the planet.",
+      "location": "Royal Garden Hotel, 2-24, Kensington High Street, South Kensington, Royal Borough of Kensington and Chelsea, London, Greater London, England, W8 4PT, United Kingdom",
+      "country": "United Kingdom",
+      "city": "London",
+      "datetime": "23.8.2022",
+      "longitude": "-0.18807466604958878",
+      "latitude": "51.502753299999995"
+    },
+    {
+      "title": "Old electronics",
+      "description": "-",
+      "location": "27, Flood Street, Chelsea, Royal Borough of Kensington and Chelsea, London, Greater London, England, SW3 5RR, United Kingdom",
+      "country": "United Kingdom",
+      "city": "London",
+      "datetime": "22.8.2022",
+      "longitude": "-0.1662215",
+      "latitude": "51.4875043"
+    }
+  ]
+}
