@@ -3,8 +3,6 @@ This application allows people to find each other in order to collect things for
 
 This application uses nativeAPI to work with IRIS.
 
-Some basic things are available to everyone, but in order to post an ad, you need to log in with a Google account.
-
 ## How to use it
 It is very simple. To start the application, clone project:
  ```
