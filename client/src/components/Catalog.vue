@@ -175,6 +175,12 @@ export default {
       axios.post('http://127.0.0.1:8011/data/getting', this.formdata).then(
           function (response) {
             that.items = response.data.data;
+            that.mapVisible = false;
+
+            that.$nextTick(() => {
+              // Adding the component back in
+              that.mapVisible = true;
+            });
           });
     },
     setData(item) {
