@@ -93,7 +93,7 @@ export default {
     this.formdata = {
       name: 'Items'
     };
-    axios.post('http://127.0.0.1:8011/check-global-from-iris', this.formdata).then(
+    axios.post('http://185.69.153.16:8011/check-global-from-iris', this.formdata).then(
         function (response) {
           if (response.data.data > 0){
             that.getData();
@@ -151,7 +151,7 @@ export default {
       this.processing = true;
       this.formdata = {};
       let that = this;
-      axios.post('http://127.0.0.1:8011/import-dataset', this.formdata).then(
+      axios.post('http://185.69.153.16:8011/import-dataset', this.formdata).then(
           function (response) {
             if(response.data.status){
               that.getData();
@@ -159,7 +159,7 @@ export default {
               // that.checked = true;
               //
               // let that_i = that;
-              // axios.post('http://127.0.0.1:8011/data/getting/month', that.formdata).then(
+              // axios.post('http://185.69.153.16:8011/data/getting/month', that.formdata).then(
               //     function (response) {
               //       that_i.values = response.data.data;
               //       that_i.value = response.data.value;
@@ -172,7 +172,7 @@ export default {
         year: this.year
       };
       let that = this;
-      axios.post('http://127.0.0.1:8011/data/getting', this.formdata).then(
+      axios.post('http://185.69.153.16:8011/data/getting', this.formdata).then(
           function (response) {
             that.items = response.data.data;
           });
@@ -180,7 +180,7 @@ export default {
     setData(item) {
       this.formdata = item;
       let that = this;
-      axios.post('http://127.0.0.1:8011/data/set', this.formdata).then(
+      axios.post('http://185.69.153.16:8011/data/set', this.formdata).then(
           function (response) {
             if(response.data.status){
               that.getData()
