@@ -6,7 +6,7 @@
 <!--      </md-autocomplete>-->
 <!--    </div>-->
     <div style="max-height: 85vh; overflow-y: scroll">
-      <md-card v-for="ad in items" v-bind:key="ad.title" class="ad_card">
+      <md-card v-for="ad in items" v-bind:key="ad.id" class="ad_card">
         <md-card-header>
           <div class="md-title">{{ad.title}}</div>
         </md-card-header>
@@ -19,12 +19,18 @@
         <md-card-actions>
           <span class="plan">{{ad.datetime}}</span>
           <md-button v-on:click="openMap(ad.longitude, ad.latitude)">Find on map</md-button>
+<!--          style="position:absolute; top: -65px; right: 15px"-->
+          <md-button class="md-icon-button md-raised md-warning" @click="deleteAdd(ad)" >
+            <md-icon>delete</md-icon>
+          </md-button>
         </md-card-actions>
       </md-card>
     </div>
   </div>
 </template>
+
 <script>
+import axios from "axios";
 
 export default {
   name: "AdsList",
@@ -77,6 +83,17 @@ export default {
       this.latitude = latitude;
       this.localLongitude = longitude;
       this.localLatitude = latitude;
+    },
+    deleteAdd(ad) {
+      if (window.confirm('Are you sure you want to delete "'+ad.title+'"?')) {
+        let that = this;
+        axios.post('http://127.0.0.1:8011/data/delete', {id: ad.id}).then(
+            function (response) {
+              if(response.data.status){
+                that.$parent.getData()
+              }
+            });
+      }
     },
   }
 

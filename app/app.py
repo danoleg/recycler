@@ -24,6 +24,11 @@ class ImportDataset(Resource):
         global_name = "Items"
         with open('data/demodata.json') as f:
             data = json.load(f)
+            try:
+                kill_iris_global(global_name)
+            except Exception:
+                ...
+
             result, iris_data = json_to_iris(json.dumps(data), global_name)
         if result:
             data = {
@@ -65,14 +70,20 @@ class GetData(Resource):
                 item = iris.get(global_name, 'items', i, 'title')
                 if not item:
                     break
+
+                if iris.get(global_name, 'items', i, 'deleted'):
+                    i += 1
+                    continue
+
                 items.append({
+                    "id": i,
                     "title": iris.get(global_name, 'items', i, 'title'),
                     "description": iris.get(global_name, 'items', i, 'description'),
                     "location": iris.get(global_name, 'items', i, 'location'),
                     "country": iris.get(global_name, 'items', i, 'country'),
                     "city": iris.get(global_name, 'items', i, 'city'),
-                    "longitude": float(iris.get(global_name, 'items', i, 'longitude')),
-                    "latitude": float(iris.get(global_name, 'items', i, 'latitude')),
+                    "longitude": float(iris.get(global_name, 'items', i, 'longitude') or 0),
+                    "latitude": float(iris.get(global_name, 'items', i, 'latitude') or 0),
                     "datetime": iris.get(global_name, 'items', i, 'datetime'),
                 })
                 i += 1
@@ -82,6 +93,7 @@ class GetData(Resource):
             "data": items[::-1]
         }
         return data
+
 
 class UpdateData(Resource):
     def post(self):
@@ -111,6 +123,21 @@ class UpdateData(Resource):
             "status": True
         }
         return data
+
+
+class DeleteData(Resource):
+    def post(self):
+        post_parser = reqparse.RequestParser()
+        post_parser.add_argument('id')
+        args = post_parser.parse_args()
+
+        global_name = "Items"
+        with iris_connection() as iris:
+            iris.set(True, global_name, 'items', args.id, 'deleted')
+
+        return {
+            "status": True
+        }
 
 
 class CheckGlobal(Resource):
@@ -196,6 +223,7 @@ class IRISSettings(Resource):
 api.add_resource(ImportDataset, '/import-dataset')
 api.add_resource(GetData, '/data/getting')
 api.add_resource(UpdateData, '/data/set')
+api.add_resource(DeleteData, '/data/delete')
 api.add_resource(DeleteGlobal, '/remove-global-from-iris')
 api.add_resource(CheckGlobal, '/check-global-from-iris')
 api.add_resource(IRISSettings, '/settings/iris')

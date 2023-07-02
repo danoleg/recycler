@@ -192,6 +192,16 @@ export default {
               that.getData()
             }
           });
+    },
+    deleteItem(item) {
+      this.formdata = item;
+      let that = this;
+      axios.post('http://127.0.0.1:8011/data/delete', this.formdata.id).then(
+          function (response) {
+            if(response.data.status){
+              that.getData()
+            }
+          });
     }
   }
 }
