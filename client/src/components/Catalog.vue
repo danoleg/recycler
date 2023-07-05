@@ -15,6 +15,9 @@
 <!--            md-confirm-text="Done" />-->
 <!--      </div>-->
       <div class="left">
+        <md-button class="md-icon-button md-raised md-primary" @click="getCurrentLocation" style="position:absolute; bottom: 10px; left: 25px">
+          <md-icon>my_location</md-icon>
+        </md-button>
         <MyMaper :items="items" :longitude="longitude" :latitude="latitude" v-if="mapVisible" v-on:setNewAddress="setNewAddress"></MyMaper>
       </div>
       <div class="right">
@@ -85,7 +88,8 @@ export default {
       processing: false,
       formdata: {},
       mapVisible: true,
-      items: []
+      items: [],
+      userLocation: null
     };
   },
   mounted() {
@@ -101,9 +105,27 @@ export default {
             that.checked = true;
           }
         });
-
   },
   methods: {
+    getCurrentLocation(){
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            this.onLocationSuccess.bind(this),
+            this.onLocationError.bind(this)
+        );
+      } else {
+        console.error("Geolocation is not supported by this browser.");
+      }
+    },
+    onLocationSuccess(position) {
+      const { latitude, longitude } = position.coords;
+      // Store the user's location coordinates in the data property
+      this.setLatitude(latitude)
+      this.setLongitude(longitude)
+    },
+    onLocationError(error) {
+      console.error("Error getting user location:", error);
+    },
     setLongitude(longitude){
       this.longitude = longitude;
       this.mapVisible = false;
