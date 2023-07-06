@@ -108,6 +108,9 @@ export default {
   },
   methods: {
     getCurrentLocation(){
+      if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1" && window.location.protocol !== "https:") {
+        alert("HTTPS required");
+      }
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             this.onLocationSuccess.bind(this),
