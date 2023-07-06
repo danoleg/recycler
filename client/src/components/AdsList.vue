@@ -89,7 +89,7 @@ export default {
     deleteAdd(ad) {
       if (window.confirm('Are you sure you want to delete "'+ad.title+'"?')) {
         let that = this;
-        axios.post('http://127.0.0.1:8011/data/delete', {id: ad.id}).then(
+        axios.post('http://185.69.153.16:8011/data/delete', {id: ad.id}).then(
             function (response) {
               if(response.data.status){
                 that.$parent.getData()

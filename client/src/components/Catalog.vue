@@ -218,7 +218,7 @@ export default {
     deleteItem(item) {
       this.formdata = item;
       let that = this;
-      axios.post('http://127.0.0.1:8011/data/delete', this.formdata.id).then(
+      axios.post('http://185.69.153.16:8011/data/delete', this.formdata.id).then(
           function (response) {
             if(response.data.status){
               that.getData()
